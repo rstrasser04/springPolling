@@ -226,9 +226,7 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
       }
 
       <div className="candidate-container">
-        {
-          
-          candidates.map((candidate, index) => {  
+        {candidates.map((candidate, index) => {  
               return (
                 <div className="mt-4 flex items-center" key={candidate.name}>
                   
@@ -250,7 +248,11 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
                     </div>
                 </div>
               )   
-          })
+          }).sort(function(a, b) {
+            if(a.name < b.name) return -1;
+            if(a.name > b.name) return 1;
+            return 0;
+           })
         }
         
       </div> 
@@ -258,9 +260,10 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
         <h1>
           {totalUpvotes}
         </h1>
+        <button className='backButton' onClick={() => history.goBack()}>Back</button>
+        <button className='reloadButton'onClick={() => window.location.reload(false)}>Reload</button>
       </div>
-      <button className='backButton' onClick={() => history.goBack()}>Back</button>
-      <button className='reloadButton'onClick={() => window.location.reload(false)}>Reload</button>
+      
     </div>
   )
 }
@@ -317,8 +320,6 @@ function candidate5Style(width) {
   return {
     backgroundColor: '#2E8BC9',
     width: `${width}%`,
-    borderTopRightRadius: 5,
-    borderBottomRightRadius: 5,
     transition: 'all 0.5s ease'
   }
 }
@@ -327,8 +328,6 @@ function candidate6Style(width) {
   return {
     backgroundColor: '#75717d',
     width: `${width}%`,
-    borderTopRightRadius: 5,
-    borderBottomRightRadius: 5,
     transition: 'all 0.5s ease'
   }
 }
@@ -337,8 +336,6 @@ function candidate7Style(width) {
   return {
     backgroundColor: '#6d3e3a',
     width: `${width}%`,
-    borderTopRightRadius: 5,
-    borderBottomRightRadius: 5,
     transition: 'all 0.5s ease'
   }
 }
@@ -347,8 +344,6 @@ function candidate8Style(width) {
   return {
     backgroundColor: '#82735b',
     width: `${width}%`,
-    borderTopRightRadius: 5,
-    borderBottomRightRadius: 5,
     transition: 'all 0.5s ease'
   }
 }
@@ -364,7 +359,16 @@ function candidate9Style(width) {
 }
 
 const voteImageContainerStyle = (index, isDisabled) => ({
-  backgroundColor: index === Number(0) ? "#ff6600" : index === Number(1) ? "#666666" : index === Number(2) ? "#6699CC" : index === Number(3) ? "#333333" : "#2E8BC9",
+  backgroundColor: 
+  index === Number(0) ? "#ff6600" 
+  : index === Number(1) ? "#666666" 
+  : index === Number(2) ? "#6699CC" 
+  : index === Number(3) ? "#333333"
+  : index === Number(4) ? "#2E8BC9" 
+  : index === Number(5) ? "#75717d" 
+  : index === Number(6) ? "#6d3e3a" 
+  : index === Number(7) ? "#82735b" 
+  : "#3e332e",
   boxShadow: 'rgba(0, 0, 0, 0.25) 0px 0.125rem 0.25rem',
   borderRadius: 9999,
   opacity: isDisabled ? .5 : 1,

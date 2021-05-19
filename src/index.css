@@ -32,18 +32,18 @@ code {
 
 .background {
   background:url('https://seminar-media.s3.amazonaws.com/Spring/2021/Polling/background.png');
-  background-position: top right;
-  background-size:contain;
+  background-position: top left;
+  background-size:cover;
   background-repeat: no-repeat;
-  width:50%;
+  width:25%;
+  height:100%;
 }
-.background h1 {
+.pollHeader {
   display: flex;
-  justify-content: flex-end;
-  margin-top:-50px;
+  justify-content: flex-start;
   color:#595959;
 }
-.background h1 svg {
+.pollHeader svg {
   fill:#ff6600;
   margin-right:15px;
 }
@@ -51,9 +51,7 @@ code {
   display: flex;
   max-width: 1200px;
   margin: 0 auto;
-  height: 500px;
-  padding-top: 50px;
-  margin-top:30px;
+  height: 650px;
 }
 
 .site-content {
@@ -101,25 +99,28 @@ select option {
   padding:0;
 }
 .poll-wrapper {
-  padding:10px 20px;
+  padding: 10px 20px;
   width: 100%;
   background-color: #b6b6b6;
-  zoom:92%;
+  zoom: 86%;
 }
 .pollContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  flex-direction: column;
 }
 .pollView {
   margin-bottom:10px;
 }
 .candidate-container {
+  height: 305px;
   display: flex;
-  justify-content:flex-start;
   flex-direction: column;
   flex-wrap: wrap;
-  width:50%;
+}
+.no-item {
+  display: none;
 }
 .vote-button {
   color: #ffffff;
@@ -135,14 +136,17 @@ select option {
   opacity: .7 !important;
 }
 .totalVotes {
-  width:50%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-self: center;
   align-items: center;
+  width: 50%;
+  flex-direction: column;
 }
 .totalVotes h1 {
   color: #000000;
   font-size: 8rem;
+  text-align: center;
 }
 
 .backButton {
@@ -157,6 +161,8 @@ select option {
   text-align: center;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   margin-right:10px;
+  margin-bottom:10px;
+  width:50%;
 }
 .reloadButton {
   background: rgb(102,153,204);
@@ -171,4 +177,5 @@ select option {
   line-height: 1.5;
   text-align: center;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  width:50%;
 }

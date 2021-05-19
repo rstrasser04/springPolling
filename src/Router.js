@@ -16,9 +16,10 @@ import CreatePoll from './CreatePoll';
 export default function Router() {
   return (
     <BrowserRouter>
+    <h1 className="pollHeader"><FaWindowMinimize/>Poll Question</h1>
       <div className="site-container">
         <div className="background">
-          <h1><FaWindowMinimize/>Poll Question</h1>
+          
         </div>
         <div className="poll-wrapper 
           w-full lg:w-main
