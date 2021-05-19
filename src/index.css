@@ -1,0 +1,174 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background-color: #ffffff;
+  font-size:14px;
+}
+
+code {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  color: #0E0E0E;
+}
+
+.background {
+  background:url('https://seminar-media.s3.amazonaws.com/Spring/2021/Polling/background.png');
+  background-position: top right;
+  background-size:contain;
+  background-repeat: no-repeat;
+  width:50%;
+}
+.background h1 {
+  display: flex;
+  justify-content: flex-end;
+  margin-top:-50px;
+  color:#595959;
+}
+.background h1 svg {
+  fill:#ff6600;
+  margin-right:15px;
+}
+.site-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 500px;
+  padding-top: 50px;
+  margin-top:30px;
+}
+
+.site-content {
+  flex: 1;
+}
+
+h1{
+  font-size:2rem;
+  font-weight: 700;
+}
+.mt-8 {
+  margin-top:0px;
+  font-size: 20px;
+}
+h2 {
+  font-size: 30px;
+  font-size:1.75rem;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  background-color: black;
+}
+
+select option {
+  background-color: black;
+}
+
+.toast-background {
+  background-color: #ff00e4;
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+.p-10 {
+  padding:0;
+}
+.poll-wrapper {
+  padding:10px 20px;
+  width: 100%;
+  background-color: #b6b6b6;
+  zoom:92%;
+}
+.pollContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.pollView {
+  margin-bottom:10px;
+}
+.candidate-container {
+  display: flex;
+  justify-content:flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width:50%;
+}
+.vote-button {
+  color: #ffffff;
+  width: auto;
+  min-width: 228px;
+  font-size: 1.2rem;
+  border-radius: 25px !important;
+  padding: 10px;
+  text-align: left;
+  transition: 0.5s background ease-in-out;
+}
+.vote-button:hover {
+  opacity: .7 !important;
+}
+.totalVotes {
+  width:50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.totalVotes h1 {
+  color: #000000;
+  font-size: 8rem;
+}
+
+.backButton {
+  background:#ff6600;
+  border-color:#ff6600;
+  color:#fff;
+  padding: .5rem 1rem;
+  font-size:1rem;
+  font-weight:400;
+  line-height: 1.5;
+  float:right;
+  text-align: center;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  margin-right:10px;
+}
+.reloadButton {
+  background: rgb(102,153,204);
+  border-color:rgb(102,153,204);
+  margin-right: 10px;
+  padding: .5rem 1rem;
+  color:#fff;
+  margin-right: 10px;
+  padding: .5rem 1rem;
+  font-size:1rem;
+  font-weight:400;
+  line-height: 1.5;
+  text-align: center;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
