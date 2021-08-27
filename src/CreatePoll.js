@@ -13,6 +13,7 @@ let pollId;
 
 const initialState = {
   pollType: null,
+  candidateType: null,
   candidate1: null,
   candidate2: null,
   candidate3: null,
@@ -37,29 +38,13 @@ export default function CreatePoll() {
     const { name, value } = e.target
     setState(currentState => ({ ...currentState, [name]: value }))
   }
-  async function onChangeImage(e) {
-    if (!e.target.files[0]) return
-    setState(currentState => ({ ...currentState, isUploading: true }))
-    e.persist()
-    const file = e.target.files[0];
-    const fileName = `${uuid()}_${file.name}`;
-    setState(currentState => ({
-      ...currentState,
-      [e.target.name]: {
-        localFile: URL.createObjectURL(file),
-        file,
-        fileName
-      }
-    }))
-    await Storage.put(fileName, file);
-    setState(currentState => ({ ...currentState, isUploading: false }));
-  }
 
   async function createPoll() {
     /* Check if poll name is already taken, if so append a version # to the name
     *  then create the poll.
     */
     const { pollType } = state;
+    const { candidateType } = state;
     let { pollName } = state;
     try {
       pollId = slugify(pollName);
@@ -82,61 +67,73 @@ export default function CreatePoll() {
         pollName = `${pollName}-v-${counter}`;
       }
       const pollData = { id: pollId, itemType: "Poll", type: pollType, name: pollName };
+
       const isImage = pollType === 'image';
+
+      const isCandidate = candidateType === "Answer"
 
       const candidate1Data = {
         pollCandidatesId: pollId,
         upvotes: 0,
-        name: isImage ? null : candidate1,
-        image: isImage ? candidate1.fileName : null
+        name: !candidate1 ? "N/A" : candidate1,
+        image: isImage ? candidate1.fileName : null,
+        candidateType: "Answer"
       }
       const candidate2Data = {
         pollCandidatesId: pollId,
         upvotes: 0,
-        name: isImage ? null : candidate2,
-        image: isImage ? candidate2.fileName : null
+        name: !candidate2 ? "N/A" : candidate2,
+        image: isImage ? candidate2.fileName : null,
+        candidateType: "Answer"
       }
       const candidate3Data = {
         pollCandidatesId: pollId,
         upvotes: 0,
-        name: isImage ? null : candidate3,
-        image: isImage ? candidate3.fileName : null
+        name: !candidate3 ? "N/A" : candidate3,
+        image: isImage ? candidate3.fileName : null,
+        candidateType: "Answer"
       }
       const candidate4Data = {
         pollCandidatesId: pollId,
         upvotes: 0,
-        name: isImage ? null : candidate4,
-        image: isImage ? candidate4.fileName : null
+        name: !candidate4 ? "N/A" : candidate4,
+        image: isImage ? candidate4.fileName : null,
+        candidateType: "Answer"
       }
       const candidate5Data = {
         pollCandidatesId: pollId,
         upvotes: 0,
-        name: isImage ? null : candidate5,
-        image: isImage ? candidate5.fileName : null
+        name: !candidate5 ? "N/A" : candidate5,
+        image: isImage ? candidate5.fileName : null,
+        candidateType: "Answer"
       }
       const candidate6Data = {
         pollCandidatesId: pollId,
         upvotes: 0,
-        name: isImage ? null : candidate6,
-        image: isImage ? candidate5.fileName : null
+        name: !candidate6 ? "N/A" : candidate6,
+        image: isImage ? candidate5.fileName : null,
+        candidateType: "Answer"
       }
       const candidate7Data = {
         pollCandidatesId: pollId,
         upvotes: 0,
-        name: isImage ? null : candidate7,
-        image: isImage ? candidate5.fileName : null
+        name: !candidate7 ? "N/A" : candidate7,
+        image: isImage ? candidate5.fileName : null,
+        candidateType: "Answer"
       }
       const candidate8Data = {
         pollCandidatesId: pollId,
         upvotes: 0,
-        name: isImage ? null : candidate8,
-        image: isImage ? candidate5.fileName : null
+        name: !candidate8 ? "N/A" : candidate8,
+        image: isImage ? candidate5.fileName : null,
+        candidateType: "Answer"
       }
       const candidate9Data = {
         pollCandidatesId: pollId,
         upvotes: 0,
-        name: isImage ? null : candidate9,
-        image: isImage ? candidate5.fileName : null
+        name: !candidate9 ? "N/A" : candidate9,
+        image: isImage ? candidate5.fileName : null,
+        candidateType: "Answer"
       }
 
       const createPollPromise = API.graphql({ query: createPollMutation, variables: { input: pollData } });
@@ -268,63 +265,6 @@ export default function CreatePoll() {
             />
           </div>
         )
-      }
-      {
-        pollType === 'image' && (
-          <div className="mt-8">
-            <p className="mb-2 font-bold">What question do you want to ask?</p>
-            <input
-              placeholder="Question"
-              name="pollName"
-              autoComplete="off"
-              onChange={onChangeText}
-              className="w-full text-xl px-2 py-1 outline-none border rounded text-gray-400 bg-gray-800 bg-gray-900 border-gray-800"
-            />
-            <div className="mt-6">
-              <p className="mb-4 mt-6 font-bold">What is the first option?</p>
-              {
-                state.candidate1 && (
-                  <img
-                    src={state.candidate1.localFile}
-                    style={imageStyle}
-                  />
-                )
-              }
-              <div>
-                <input
-                  type="file"
-                  name="candidate1"
-                  id="file1"
-                  style={inputFileStyle}
-                  onChange={onChangeImage}
-                />
-                <label htmlFor="file1" style={inputLabelStyle}>Choose a file</label>
-              </div>
-              <p className="mb-4 mt-6 font-bold">What is the second option?</p>
-              {
-                state.candidate2 && (
-                  <img
-                    src={state.candidate2.localFile}
-                    style={imageStyle}
-                  />
-                )
-              }
-              <div>
-                <input
-                  type="file"
-                  name="candidate2"
-                  id="file2"
-                  style={inputFileStyle}
-                  onChange={onChangeImage}
-                />
-                <label htmlFor="file2" style={inputLabelStyle}>Choose a file</label>
-              </div>
-            </div>
-          </div>
-        )
-      }
-      {
-        isUploading && <p className="mt-6 text-base">Please wait, file uploading...</p>
       }
       {
         pollType && (

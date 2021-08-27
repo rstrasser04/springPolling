@@ -1,5 +1,5 @@
 projects:
-  seminarpolls-prod:
+  fallpolls-prod:
     schemaPath: src/graphql/schema.json
     includes:
       - src/graphql/**/*.js
@@ -13,3 +13,6 @@ projects:
         region: us-east-1
         apiId: ilkh7obbnvautliidp6rmvbdhm
         maxDepth: 2
+extensions:
+  amplify:
+    version: 3

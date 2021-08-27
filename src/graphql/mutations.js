@@ -72,6 +72,7 @@ export const createCandidate = /* GraphQL */ `
       id
       pollCandidatesId
       image
+      candidateType
       name
       upvotes
       createdAt
@@ -88,6 +89,7 @@ export const updateCandidate = /* GraphQL */ `
       id
       pollCandidatesId
       image
+      candidateType
       name
       upvotes
       createdAt
@@ -104,6 +106,7 @@ export const deleteCandidate = /* GraphQL */ `
       id
       pollCandidatesId
       image
+      candidateType
       name
       upvotes
       createdAt

@@ -6,12 +6,14 @@ import voteBlue from './assets/voteblue.png';
 import Button from './Button';
 import { toast, ToastContainer } from 'react-toastify';
 import orderBy from 'lodash/orderBy'
+import { map } from 'lodash';
 
 export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes, pollView = false }) {
   const history = useHistory();
   
   const isImage = poll.type === 'image';
   let totalUpvotes;
+  let noName;
   let candidate1;
   let candidate2;
   let candidate3;
@@ -83,8 +85,8 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
     candidate2 = candidates[1].upvotes ? (candidates[1].upvotes / totalUpvotes) * 100 : 0;
     candidate3 = candidates[2].upvotes ? (candidates[2].upvotes / totalUpvotes) * 100 : 0;
   }
-   
   }
+  
   if (totalUpvotes === 0) {
     /* If poll is new, set 50% width for each side of chart */
     candidate1 = 50;
@@ -95,7 +97,7 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
     candidate6 = 50;
     candidate7 = 50;
     candidate8 = 50;
-    candidate9 = 50;
+    candidate9 = 50; 
   }
 
   const voteDataFromStorage = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -205,40 +207,77 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
     if(a.name > b.name) return 1;
     return 0;
    })
-   
+   var nameArray = candidates.map(function (el) { return el.name });
+   console.log(nameArray)
   return (
     <div className="pollContainer">
       {
         /* This is the data vizualization. Essentially a rectangle filled with the percentage width of each candidate. */
         pollView && (
           <div style={dataVizStyle} className="pollView">
-            <div style={candidate1Style(candidate1)} />
-            <div style={candidate2Style(candidate2)} />
-            <div style={candidate3Style(candidate3)} />
-            <div style={candidate4Style(candidate4)} />
-            <div style={candidate5Style(candidate5)} />
-            <div style={candidate6Style(candidate6)} />
-            <div style={candidate7Style(candidate7)} />
-            <div style={candidate8Style(candidate8)} />
-            <div style={candidate9Style(candidate9)} />
+            {nameArray[0] === "N/A" ?
+              <div style={{ display: 'none' }} />
+              :
+              <div style={candidate1Style(candidate1)} />
+            }
+            {nameArray[1] === "N/A" ?
+              <div style={{ display: 'none' }} />
+              :
+              <div style={candidate2Style(candidate2)} />
+            }
+            {nameArray[2] === "N/A" ?
+              <div style={{ display: 'none' }} />
+              :
+              <div style={candidate3Style(candidate3)} />
+            }
+            {nameArray[3] === "N/A" ?
+              <div style={{ display: 'none' }} />
+              :
+              <div style={candidate4Style(candidate4)} />
+            }
+            {nameArray[4] === "N/A" ?
+              <div style={{ display: 'none' }} />
+              :
+              <div style={candidate5Style(candidate5)} />
+            }
+            {nameArray[5] === "N/A" ?
+              <div style={{ display: 'none' }} />
+              :
+              <div style={candidate6Style(candidate6)} />
+            }
+            {nameArray[6] === "N/A" ?
+              <div style={{ display: 'none' }} />
+              :
+              <div style={candidate7Style(candidate7)} />
+            }
+            {nameArray[7] === "N/A" ?
+              <div style={{ display: 'none' }} />
+              :
+              <div style={candidate8Style(candidate8)} />
+            }
+            {nameArray[8] === "N/A" ?
+              <div style={{ display: 'none' }} />
+              :
+              <div style={candidate9Style(candidate9)} />
+            }
           </div>
         )
       }
+      
 
       <div className="candidate-container">
         {candidates.map((candidate, index) => {  
               return (
-                <div className="mt-4 flex items-center" key={candidate.name}>
-                  
+                <div className="mt-4 flex items-center" key={candidate.name}> 
                   <div className="flex mr-4">
-                    {candidate.name === null ? 
+                    {candidate.name === "N/A" ? 
                       <button style={{ display: 'none'}}>{candidate.name}</button> 
                     :
                       <button onClick={candidate.isDisabled ? null : () => onUpVote(candidate, poll)} className="vote-button w-12 md:w-18 capitalize text-2xl sm:text-4xl font-bold" style={voteImageContainerStyle(index, candidate.isDisabled)}>{candidate.name}</button>
                     }
                   </div>
                   <div className="flex items-center">
-                  {candidate.name === null ?
+                  {candidate.name === "N/A" ?
                     <p style={{ display: 'none' }}>{candidate.upvotes}</p>
                   :  
                     <p className="
