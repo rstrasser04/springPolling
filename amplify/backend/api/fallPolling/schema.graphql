@@ -12,13 +12,15 @@ type Poll @model
 }
 
 type Candidate @model
+  @key(name: "byCandidateName", fields: ["name", "candidateType"], queryField: "candidatesByName")
   @auth(rules: [
     { allow: public, operations: [create, read] }
   ]) {
   id: ID!
   pollCandidatesId: ID
   image: String
-  name: String
+  candidateType: String!
+  name: String!
   upvotes: Int
 }
 

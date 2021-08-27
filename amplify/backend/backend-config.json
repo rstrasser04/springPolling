@@ -14,7 +14,7 @@
         }
     },
     "api": {
-        "springPolling": {
+        "fallPolling": {
             "service": "AppSync",
             "providerPlugin": "awscloudformation",
             "output": {

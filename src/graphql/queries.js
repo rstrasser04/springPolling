@@ -41,6 +41,7 @@ export const getCandidate = /* GraphQL */ `
       id
       pollCandidatesId
       image
+      candidateType
       name
       upvotes
       createdAt
@@ -59,6 +60,7 @@ export const listCandidates = /* GraphQL */ `
         id
         pollCandidatesId
         image
+        candidateType
         name
         upvotes
         createdAt
@@ -90,6 +92,37 @@ export const itemsByType = /* GraphQL */ `
         name
         type
         itemType
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const candidatesByName = /* GraphQL */ `
+  query CandidatesByName(
+    $name: String
+    $candidateType: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelCandidateFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    candidatesByName(
+      name: $name
+      candidateType: $candidateType
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        pollCandidatesId
+        image
+        candidateType
+        name
+        upvotes
         createdAt
         updatedAt
       }

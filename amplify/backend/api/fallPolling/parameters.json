@@ -1,5 +1,5 @@
 {
-  "AppSyncApiName": "seminarpolls",
+  "AppSyncApiName": "fallpolls",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": "false"
 }

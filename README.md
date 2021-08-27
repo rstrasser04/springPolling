@@ -94,4 +94,4 @@ __Response mapping template__
 $util.quiet($ctx.result.put("clientId", "$context.arguments.clientId"))
 $util.toJson($ctx.result)
 ```
-"# springPolling" 
+"# fallPolling" 
