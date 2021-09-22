@@ -215,47 +215,47 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
         /* This is the data vizualization. Essentially a rectangle filled with the percentage width of each candidate. */
         pollView && (
           <div style={dataVizStyle} className="pollView">
-            {nameArray[0] === "n/a" ?
+            {nameArray[0] === "N/A" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate1Style(candidate1)} />
             }
-            {nameArray[1] === "n/a" ?
+            {nameArray[1] === "N/A" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate2Style(candidate2)} />
             }
-            {nameArray[2] === "n/a" ?
+            {nameArray[2] === "N/A" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate3Style(candidate3)} />
             }
-            {nameArray[3] === "n/a" ?
+            {nameArray[3] === "N/A" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate4Style(candidate4)} />
             }
-            {nameArray[4] === "n/a" ?
+            {nameArray[4] === "N/A" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate5Style(candidate5)} />
             }
-            {nameArray[5] === "n/a" ?
+            {nameArray[5] === "N/A" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate6Style(candidate6)} />
             }
-            {nameArray[6] === "n/a" ?
+            {nameArray[6] === "N/A" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate7Style(candidate7)} />
             }
-            {nameArray[7] === "n/a" ?
+            {nameArray[7] === "N/A" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate8Style(candidate8)} />
             }
-            {nameArray[8] === "n/a" ?
+            {nameArray[8] === "N/A" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate9Style(candidate9)} />
@@ -269,7 +269,7 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
         {candidates.map((candidate, index) => {  
               return (
                 <div className ="voteSection" key={candidate.name}>
-                  {candidate.name === "n/a" ? 
+                  {candidate.name === "N/A" ? 
                     <div className="flex mr-4" style={{ display: 'none'}}>
                       <button onClick={candidate.isDisabled ? null : () => onUpVote(candidate, poll)} className="vote-button w-12 md:w-18 capitalize text-2xl sm:text-4xl font-bold" style={voteImageContainerStyle(index, candidate.isDisabled)}>{candidate.name}</button>
                     </div>
@@ -279,7 +279,7 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
                     </div>
                   }
                   <div className="flex items-center">
-                    {candidate.name === "n/a" ?
+                    {candidate.name === "N/A" ?
                       <p style={{ display: 'none' }}>{candidate.upvotes}</p>
                     :  
                       <p className="
