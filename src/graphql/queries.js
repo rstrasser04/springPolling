@@ -73,6 +73,7 @@ export const listCandidates = /* GraphQL */ `
 export const itemsByType = /* GraphQL */ `
   query ItemsByType(
     $itemType: String
+    $candidateType: ModelStringKeyConditionInput
     $createdAt: ModelStringKeyConditionInput
     $sortDirection: ModelSortDirection
     $filter: ModelPollFilterInput
@@ -81,6 +82,7 @@ export const itemsByType = /* GraphQL */ `
   ) {
     itemsByType(
       itemType: $itemType
+      candidateType: $candidateType
       createdAt: $createdAt
       sortDirection: $sortDirection
       filter: $filter
@@ -91,6 +93,8 @@ export const itemsByType = /* GraphQL */ `
         id
         name
         type
+        pollCandidatesId
+        candidateType
         itemType
         createdAt
         updatedAt

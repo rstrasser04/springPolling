@@ -65,7 +65,7 @@ export default function Polls() {
     const { id: pollId } = pollData
     const id1 = items[0].id
     const id2 = items[1].id
-
+    console.log(items)
     subscriptions[id1] = API.graphql({
       query: onUpdateByID,
       variables: { id: id1 }

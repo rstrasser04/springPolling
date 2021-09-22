@@ -36,7 +36,7 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
       candidate4 = candidates[3].upvotes ? (candidates[3].upvotes / totalUpvotes) * 100 : 0;  
   } else if (candidates.length === 5) {
       totalUpvotes = candidates.reduce((acc, next) => acc + next.upvotes, 0);
-      candidate1 = candidates[0].upvotes ? (candidates[0].upvotes / totalUpvotes) * 100 : 0;
+      candidate1 = candidates[0 ].upvotes ? (candidates[0].upvotes / totalUpvotes) * 100 : 0;
       candidate2 = candidates[1].upvotes ? (candidates[1].upvotes / totalUpvotes) * 100 : 0;
       candidate3 = candidates[2].upvotes ? (candidates[2].upvotes / totalUpvotes) * 100 : 0;
       candidate4 = candidates[3].upvotes ? (candidates[3].upvotes / totalUpvotes) * 100 : 0;
@@ -215,47 +215,47 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
         /* This is the data vizualization. Essentially a rectangle filled with the percentage width of each candidate. */
         pollView && (
           <div style={dataVizStyle} className="pollView">
-            {nameArray[0] === "N/A" ?
+            {nameArray[0] === "n/a" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate1Style(candidate1)} />
             }
-            {nameArray[1] === "N/A" ?
+            {nameArray[1] === "n/a" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate2Style(candidate2)} />
             }
-            {nameArray[2] === "N/A" ?
+            {nameArray[2] === "n/a" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate3Style(candidate3)} />
             }
-            {nameArray[3] === "N/A" ?
+            {nameArray[3] === "n/a" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate4Style(candidate4)} />
             }
-            {nameArray[4] === "N/A" ?
+            {nameArray[4] === "n/a" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate5Style(candidate5)} />
             }
-            {nameArray[5] === "N/A" ?
+            {nameArray[5] === "n/a" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate6Style(candidate6)} />
             }
-            {nameArray[6] === "N/A" ?
+            {nameArray[6] === "n/a" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate7Style(candidate7)} />
             }
-            {nameArray[7] === "N/A" ?
+            {nameArray[7] === "n/a" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate8Style(candidate8)} />
             }
-            {nameArray[8] === "N/A" ?
+            {nameArray[8] === "n/a" ?
               <div style={{ display: 'none' }} />
               :
               <div style={candidate9Style(candidate9)} />
@@ -268,23 +268,25 @@ export default function Candidates({ poll, candidates, onUpVote, simulateUpvotes
       <div className="candidate-container">
         {candidates.map((candidate, index) => {  
               return (
-                <div className="mt-4 flex items-center" key={candidate.name}> 
-                  <div className="flex mr-4">
-                    {candidate.name === "N/A" ? 
-                      <button style={{ display: 'none'}}>{candidate.name}</button> 
-                    :
+                <div className ="voteSection" key={candidate.name}>
+                  {candidate.name === "n/a" ? 
+                    <div className="flex mr-4" style={{ display: 'none'}}>
                       <button onClick={candidate.isDisabled ? null : () => onUpVote(candidate, poll)} className="vote-button w-12 md:w-18 capitalize text-2xl sm:text-4xl font-bold" style={voteImageContainerStyle(index, candidate.isDisabled)}>{candidate.name}</button>
-                    }
-                  </div>
-                  <div className="flex items-center">
-                  {candidate.name === "N/A" ?
-                    <p style={{ display: 'none' }}>{candidate.upvotes}</p>
-                  :  
-                    <p className="
-                    w-20
-                    text-4xl font-bold ml-3" style={voteNameStyle(index)}>{candidate.upvotes}</p>
-                    }
                     </div>
+                    :
+                    <div className="flex mr-4">
+                      <button onClick={candidate.isDisabled ? null : () => onUpVote(candidate, poll)} className="vote-button w-12 md:w-18 capitalize text-2xl sm:text-4xl font-bold" style={voteImageContainerStyle(index, candidate.isDisabled)}>{candidate.name}</button>
+                    </div>
+                  }
+                  <div className="flex items-center">
+                    {candidate.name === "n/a" ?
+                      <p style={{ display: 'none' }}>{candidate.upvotes}</p>
+                    :  
+                      <p className="
+                      w-20
+                      text-4xl font-bold ml-3" style={voteNameStyle(index)}>{candidate.upvotes}</p>
+                    }
+                      </div>
                 </div>
               )   
           }).sort(function(a, b) {
