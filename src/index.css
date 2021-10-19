@@ -6,12 +6,9 @@ body {
 }
 
 #root {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   overflow: auto;
+  max-width: 1000px;
+  margin: auto;
 }
 
 html, body {
@@ -31,16 +28,17 @@ code {
 }
 
 .background {
-  background:url('https://seminar-media.s3.amazonaws.com/Spring/2021/Polling/background.png');
+  background:url('https://d2vqeoj3f0fgvp.cloudfront.net/Fall/2021/Polling-Background.jpg');
   background-position: top left;
   background-size:cover;
   background-repeat: no-repeat;
-  width:25%;
-  height:100%;
+  width:15%;
+  height:auto;
 }
 .pollHeader {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   color:#595959;
 }
 .pollHeader svg {
@@ -49,9 +47,9 @@ code {
 }
 .site-container {
   display: flex;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  height: 650px;
+  height:auto;
 }
 
 .site-content {
@@ -101,14 +99,18 @@ select option {
 .poll-wrapper {
   padding: 10px 20px;
   width: 100%;
-  background-color: #b6b6b6;
+  background-color: #E0E0E0;
   zoom: 86%;
+  height:fit-content;
 }
 .pollContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   flex-direction: column;
+}
+.polls {
+  text-align: center;
 }
 .pollView {
   margin-bottom:10px;
@@ -131,6 +133,7 @@ select option {
   padding: 10px;
   text-align: left;
   transition: 0.5s background ease-in-out;
+  text-transform: none;
 }
 .vote-button:hover {
   opacity: .7 !important;
