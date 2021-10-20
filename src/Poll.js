@@ -226,7 +226,7 @@ export default function Poll() {
   console.log(state.poll.id)
   return (
     <div>
-      <h1 className="mb-4 mt-8 leading-tight sm:leading-normal font-light">{state.poll.name}</h1>
+      <h1 className="mb-4 mt-8 leading-tight sm:leading-normal font-light">{state.poll.name.replace(/-v-[1-4]/i, "")}</h1>
       <Candidates
         sortDirection='ASC'
         candidates={state.poll.candidates.items}
