@@ -9,6 +9,7 @@ body {
   overflow: auto;
   max-width: 1000px;
   margin: auto;
+  height:100%;
 }
 
 html, body {
